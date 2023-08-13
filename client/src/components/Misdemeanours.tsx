@@ -30,8 +30,10 @@ const Misdemeanours: React.FC = () => {
       />
       <h1>Misdemeanours</h1>
       {loading && <Loading />}
-      <RenderCrimes results={results} />
-      {!loading && crimes && crimes.length === 0 && <li>No results</li>}
+      {results && <RenderCrimes results={results} />}
+      {!loading && crimes && crimes.length === 0 && (
+        <li>No results! Please add a number to the url.</li>
+      )}
     </>
   );
 };
