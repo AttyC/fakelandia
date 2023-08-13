@@ -5,13 +5,14 @@ import {
   Dispatch,
   SetStateAction,
 } from 'react';
-import { TMisdemeanour } from '../../types/misdemeanours.types';
+import { TMisdemeanour, TMisdemeanours } from '../../types/misdemeanours.types';
 
 type MisdemeanourContextType = {
   crimes: TMisdemeanour[];
   loading: boolean;
   error: string;
   setAmount: Dispatch<SetStateAction<string>>;
+  setCrimes: Dispatch<SetStateAction<TMisdemeanours>>;
 };
 
 type MisdemeanourContextProviderPropsType = {
@@ -23,6 +24,7 @@ export const MisdemeanourContext = createContext<MisdemeanourContextType>({
   loading: false,
   error: '',
   setAmount: () => {},
+  setCrimes: () => {},
 });
 
 const MisdemeanourContextProvider = ({
@@ -56,6 +58,7 @@ const MisdemeanourContextProvider = ({
         loading,
         error,
         setAmount,
+        setCrimes,
       }}
     >
       {children}

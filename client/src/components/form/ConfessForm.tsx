@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import {
   validateMessage,
   validateSubject,
@@ -9,6 +9,9 @@ import { SelectInput } from './inputs/Select';
 import { TextInput } from './inputs/TextInput';
 import { ConfessFormChangeHandler, ConfessFormData } from './ConfessForm.types';
 import ConfessHeader from './ConfessHeader';
+import { MISDEMEANOURS } from '../../../types/misdemeanours.types';
+
+import { MisdemeanourContext } from '../../utils/context';
 
 const defaultFormData: ConfessFormData = {
   subject: '',
@@ -18,6 +21,8 @@ const defaultFormData: ConfessFormData = {
 
 const ConfessForm = () => {
   const [formData, setFormData] = useState<ConfessFormData>(defaultFormData);
+
+  const { crimes, setCrimes } = useContext(MisdemeanourContext);
 
   const onChangeHandler: ConfessFormChangeHandler = <
     TKey extends keyof ConfessFormData
@@ -34,14 +39,56 @@ const ConfessForm = () => {
   const [submitted, setSubmitted] = useState(false);
   const [reasonIsValid, setReasonIsValid] = useState(false);
   const [inputIsValid, setInputIsValid] = useState(false);
+  const [successMessage, setSuccessMessage] = useState('');
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const data = {
+      subject: formData.subject,
+      reason: formData.reasonForContact,
+      details: formData.message,
+    };
+    const response = await fetch('http://localhost:8080/api/confess', {
+      method: 'POST',
+      body: JSON.stringify(data),
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      },
+    });
+
+    const result = await response.json();
+
+    console.log(result);
+    result.success === false && setSuccessMessage('Aw boo, no success!');
+
+    if (result.success === true && result.justTalked === false) {
+      const id = Math.floor(Math.random() * (10000 - 1) + 1);
+      const date = new Date().toLocaleDateString();
+      setSuccessMessage('Confession received!');
+      setCrimes({
+        crimes,
+        ...[
+          {
+            citizenId: id,
+            misdemeanour: MISDEMEANOURS[data.reason],
+            date: date,
+          },
+        ],
+      });
+    }
+    return result;
+  };
 
   return (
     <>
+      {successMessage}
       <form
         data-testid='ConfessForm'
         onSubmit={(e) => {
           e.preventDefault();
           setSubmitted(true);
+          handleSubmit(e);
         }}
       >
         <ConfessHeader />
