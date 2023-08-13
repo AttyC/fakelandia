@@ -30,7 +30,7 @@ const Misdemeanour: React.FC<MisdemeanourProps> = ({ crime }) => {
   }, []);
 
   return (
-    <>
+    <tr>
       {!loading && <Loading />}
       <td>{citizenId}</td>
       <td>{date}</td>
@@ -38,7 +38,7 @@ const Misdemeanour: React.FC<MisdemeanourProps> = ({ crime }) => {
       <td>
         <img src={imgSrc} />
       </td>
-    </>
+    </tr>
   );
 };
 

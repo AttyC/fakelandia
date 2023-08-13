@@ -35,7 +35,7 @@ export const TextInput: React.FC<TextInputProps> = ({
   const validationErrors = validate(value);
 
   useEffect(() => {
-    setInputIsValid(validationErrors.length === 0);
+    setInputIsValid(validationErrors?.length === 0);
   });
 
   return (

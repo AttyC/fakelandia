@@ -24,9 +24,7 @@ const RenderCrimes: React.FC<RenderCrimesProps> = ({ results }) => {
           </thead>
           <tbody>
             {results.map((crime) => (
-              <tr>
-                <Misdemeanour crime={crime} />
-              </tr>
+              <Misdemeanour crime={crime} />
             ))}
           </tbody>
         </table>

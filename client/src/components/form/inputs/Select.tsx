@@ -1,4 +1,4 @@
-import React, { useEffect, useState, Dispatch, SetStateAction } from 'react';
+import React, { useEffect, Dispatch, SetStateAction } from 'react';
 import ErrorMessage from '../ErrorMessage';
 import {
   ReasonForContact,
@@ -32,7 +32,7 @@ export const SelectInput: React.FC<SelectProps> = ({
   const validationErrors = validate(value);
 
   useEffect(() => {
-    setReasonIsValid(validationErrors.length === 0);
+    setReasonIsValid(validationErrors?.length === 0);
   });
 
   return (
