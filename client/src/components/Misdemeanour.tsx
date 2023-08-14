@@ -30,15 +30,16 @@ const Misdemeanour: React.FC<MisdemeanourProps> = ({ crime }) => {
   }, []);
 
   return (
-    <tr>
-      {!loading && <Loading />}
-      <td>{citizenId}</td>
-      <td>{date}</td>
-      <td>{misdemeanour}</td>
-      <td>
-        <img src={imgSrc} />
-      </td>
-    </tr>
+    <>
+      <tr>
+        <td>{citizenId}</td>
+        <td>{date}</td>
+        <td>{misdemeanour}</td>
+        <td>
+          <img src={imgSrc} />
+        </td>
+      </tr>
+    </>
   );
 };
 

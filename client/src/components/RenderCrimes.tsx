@@ -12,6 +12,7 @@ const RenderCrimes: React.FC<RenderCrimesProps> = ({ results }) => {
   const { loading } = useContext(MisdemeanourContext);
   return (
     <>
+      {!loading && <Loading />}
       {!loading && results && (
         <table className='table-auto border-2 border-red-100'>
           <thead>
