@@ -2,7 +2,7 @@ import ConfessForm from './form/ConfessForm';
 
 const Confess: React.FC = () => (
   <main>
-    Confess
+    <h1>Confess</h1>
     <ConfessForm />
   </main>
 );

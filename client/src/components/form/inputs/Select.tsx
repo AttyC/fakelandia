@@ -37,8 +37,10 @@ export const SelectInput: React.FC<SelectProps> = ({
 
   return (
     <>
-      <div>
-        <label htmlFor={name}>{label}: </label>
+      <div className='py-4 my-4 text-black'>
+        <label htmlFor={name} className='text-white'>
+          {label}:{' '}
+        </label>
         <select
           id={id}
           value={value}

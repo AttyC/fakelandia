@@ -42,7 +42,7 @@ a:hover {
 }
 .active {
   color: var(--light);
-  background-color: #cc7178;
+  background-color: deeppink;
 }
 body {
   margin: 0;
@@ -51,7 +51,6 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
-  background-color: var(--light);
 }
 header {
   display: flex;

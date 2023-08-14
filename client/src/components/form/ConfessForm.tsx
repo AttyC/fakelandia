@@ -21,7 +21,6 @@ const defaultFormData: ConfessFormData = {
 
 const ConfessForm = () => {
   const [formData, setFormData] = useState<ConfessFormData>(defaultFormData);
-
   const { crimes, setCrimes } = useContext(MisdemeanourContext);
 
   const onChangeHandler: ConfessFormChangeHandler = <
@@ -58,8 +57,6 @@ const ConfessForm = () => {
     });
 
     const result = await response.json();
-
-    console.log(result);
     result.success === false && setSuccessMessage('Aw boo, no success!');
 
     if (result.success === true && result.justTalked === false) {
@@ -90,6 +87,7 @@ const ConfessForm = () => {
           setSubmitted(true);
           handleSubmit(e);
         }}
+        className='border-2 m-6 p-6 bg-sky-900 text-white font-medium'
       >
         <ConfessHeader />
         <TextInput
@@ -139,8 +137,8 @@ const ConfessForm = () => {
           disabled={!reasonIsValid || !inputIsValid}
           className={
             !reasonIsValid || !inputIsValid
-              ? 'bg-gray-100 border-2 text-gray-300 font-semibold'
-              : 'bg-pink-600 border-2 text-gray-100 font-semibold'
+              ? 'my-6 bg-gray-100 border-2 text-gray-300 font-semibold'
+              : 'my-6 bg-pink-600 border-2 text-gray-100 font-semibold'
           }
         >
           Submit
