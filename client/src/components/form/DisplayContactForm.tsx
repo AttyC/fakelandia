@@ -1,6 +1,6 @@
-import { ConfessFormData } from './ConfessForm.types';
+import { ContactFormData } from './ContactForm.types';
 
-export const DisplayConfessForm: React.FC<{ form: ConfessFormData }> = ({
+export const DisplayContactForm: React.FC<{ form: ContactFormData }> = ({
   form,
 }) => (
   <div>

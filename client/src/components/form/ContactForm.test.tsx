@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import ConfessForm from './ConfessForm';
+import ContactForm from './ContactForm';
 import user from '@testing-library/user-event';
 
 async function enterIntoTextBox(
@@ -15,17 +15,17 @@ async function enterIntoTextBox(
   }
 }
 
-describe('<ConfessForm>', () => {
+describe('<ContactForm>', () => {
   it('renders form element', () => {
-    render(<ConfessForm />);
+    render(<ContactForm />);
 
-    const form = screen.getByTestId('ConfessForm');
+    const form = screen.getByTestId('ContactForm');
 
     expect(form).toBeInTheDocument();
   });
 
   it('displays all entered values on submit', async () => {
-    render(<ConfessForm />);
+    render(<ContactForm />);
 
     const textBoxes = screen.getAllByRole('textbox');
 

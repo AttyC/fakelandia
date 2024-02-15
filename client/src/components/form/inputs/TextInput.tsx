@@ -1,20 +1,20 @@
 import React, { SetStateAction, useEffect, useState, Dispatch } from 'react';
 import ErrorMessage from '../ErrorMessage';
 import {
-  ConfessFormChangeHandler,
-  ConfessFormData,
-} from '../ConfessForm.types';
+  ContactFormChangeHandler,
+  ContactFormData,
+} from '../ContactForm.types';
 
 export interface TextInputProps {
   id: string;
-  name: keyof ConfessFormData;
+  name: keyof ContactFormData;
 
   type: 'text' | 'textarea';
   label: string;
   placeholder?: string;
   value: string;
 
-  onChangeHandler: ConfessFormChangeHandler;
+  onChangeHandler: ContactFormChangeHandler;
   setInputIsValid: Dispatch<SetStateAction<boolean>>;
   validate: (value: string) => string[];
 }

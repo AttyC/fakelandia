@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import user from '@testing-library/user-event';
-import { ConfessFormData } from '../ConfessForm.types';
+import { ContactFormData } from '../ContactForm.types';
 import { TextInput, TextInputProps } from './TextInput';
 
 describe('<TextInput>', () => {
@@ -93,8 +93,8 @@ describe('<TextInput>', () => {
       type: 'text',
       // we're using a non-valid key just to make sure our input passes the provided name
       // to the onChangeHandler, so we have to say "pretend this is really a valid property"
-      // on the ConfessFormData type. We do this by saying "as keyof ConfessFormData"
-      name: inputName as keyof ConfessFormData,
+      // on the ContactFormData type. We do this by saying "as keyof ContactFormData"
+      name: inputName as keyof ContactFormData,
       label: 'Subject',
       value: '',
       onChangeHandler: mockChangeHandler,
@@ -125,8 +125,8 @@ describe('<TextInput>', () => {
       type: 'textarea',
       // we're using a non-valid key just to make sure our input passes the provided name
       // to the onChangeHandler, so we have to say "pretend this is really a valid property"
-      // on the ConfessFormData type. We do this by saying "as keyof ConfessFormData"
-      name: inputName as keyof ConfessFormData,
+      // on the ContactFormData type. We do this by saying "as keyof ContactFormData"
+      name: inputName as keyof ContactFormData,
       label: 'Subject',
       value: '',
       onChangeHandler: mockChangeHandler,

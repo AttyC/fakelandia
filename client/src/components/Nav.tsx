@@ -4,7 +4,7 @@ const Nav: React.FC = () => (
   <ul className='primary-nav inline-flex'>
     <NavItem to={'/'} text={'Home'} />
     <NavItem to={'misdemeanours/20'} text={'Misdemeanours'} />
-    <NavItem to={'confess'} text={'Confess to us'} />
+    <NavItem to={'Contact'} text={'Contact to us'} />
   </ul>
 );
 

@@ -2,19 +2,19 @@ import React, { useEffect, Dispatch, SetStateAction } from 'react';
 import ErrorMessage from '../ErrorMessage';
 import {
   ReasonForContact,
-  ConfessFormChangeHandler,
-  ConfessFormData,
-} from '../ConfessForm.types';
+  ContactFormChangeHandler,
+  ContactFormData,
+} from '../ContactForm.types';
 
 type Option = { display: string; value: ReasonForContact };
 
 export interface SelectProps {
   id: string;
-  name: keyof ConfessFormData;
+  name: keyof ContactFormData;
   options: Option[];
   label: string;
   value: string;
-  onChangeHandler: ConfessFormChangeHandler;
+  onChangeHandler: ContactFormChangeHandler;
   setReasonIsValid: Dispatch<SetStateAction<boolean>>;
   validate: (value: string) => string[];
 }

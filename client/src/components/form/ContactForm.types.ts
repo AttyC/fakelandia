@@ -6,13 +6,13 @@ export type ReasonForContact =
   | 'united'
   | 'talk';
 
-export type ConfessFormData = {
+export type ContactFormData = {
   subject: string;
   reasonForContact: ReasonForContact;
   message: string;
 };
 
-export type ConfessFormChangeHandler = <TKey extends keyof ConfessFormData>(
-  value: ConfessFormData[TKey],
+export type ContactFormChangeHandler = <TKey extends keyof ContactFormData>(
+  value: ContactFormData[TKey],
   name: TKey
 ) => void;

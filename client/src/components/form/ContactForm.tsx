@@ -3,34 +3,34 @@ import {
   validateMessage,
   validateSubject,
   validateReasonForContact,
-} from './validation/validate_confess_form';
-import { DisplayConfessForm } from './DisplayConfessForm';
+} from './validation/validate_contact_form';
+import { DisplayContactForm } from './DisplayContactForm';
 import { SelectInput } from './inputs/Select';
 import { TextInput } from './inputs/TextInput';
-import { ConfessFormChangeHandler, ConfessFormData } from './ConfessForm.types';
-import ConfessHeader from './ConfessHeader';
+import { ContactFormChangeHandler, ContactFormData } from './ContactForm.types';
+import ContactHeader from './ContactHeader';
 import { MISDEMEANOURS } from '../../../types/misdemeanours.types';
 
 import { MisdemeanourContext } from '../../utils/context';
 
-const defaultFormData: ConfessFormData = {
+const defaultFormData: ContactFormData = {
   subject: '',
   reasonForContact: 'NOT_SELECTED',
   message: '',
 };
 
-const ConfessForm = () => {
-  const [formData, setFormData] = useState<ConfessFormData>(defaultFormData);
+const ContactForm = () => {
+  const [formData, setFormData] = useState<ContactFormData>(defaultFormData);
   const { crimes, setCrimes } = useContext(MisdemeanourContext);
 
-  const onChangeHandler: ConfessFormChangeHandler = <
-    TKey extends keyof ConfessFormData
+  const onChangeHandler: ContactFormChangeHandler = <
+    TKey extends keyof ContactFormData
   >(
-    value: ConfessFormData[TKey],
+    value: ContactFormData[TKey],
     name: TKey
   ) => {
     setSubmitted(false);
-    const newData: ConfessFormData = { ...formData };
+    const newData: ContactFormData = { ...formData };
     newData[name] = value;
     setFormData(newData);
   };
@@ -48,7 +48,7 @@ const ConfessForm = () => {
       reason: formData.reasonForContact,
       details: formData.message,
     };
-    const response = await fetch('http://localhost:8080/api/confess', {
+    const response = await fetch('http://localhost:8080/api/Contact', {
       method: 'POST',
       body: JSON.stringify(data),
       headers: {
@@ -62,7 +62,7 @@ const ConfessForm = () => {
     if (result.success === true && result.justTalked === false) {
       const id = Math.floor(Math.random() * (10000 - 1) + 1);
       const date = new Date().toLocaleDateString();
-      setSuccessMessage('Confession received!');
+      setSuccessMessage('Contaction received!');
       setCrimes({
         crimes,
         ...[
@@ -81,7 +81,7 @@ const ConfessForm = () => {
     <>
       {successMessage}
       <form
-        data-testid='ConfessForm'
+        data-testid='ContactForm'
         onSubmit={(e) => {
           e.preventDefault();
           setSubmitted(true);
@@ -89,7 +89,7 @@ const ConfessForm = () => {
         }}
         className='border-2 m-6 p-6 bg-sky-900 text-white font-medium'
       >
-        <ConfessHeader />
+        <ContactHeader />
         <TextInput
           id='subject'
           type='text'
@@ -145,10 +145,9 @@ const ConfessForm = () => {
         </button>
         <hr />
       </form>
-      {submitted && <DisplayConfessForm form={formData} />}
+      {submitted && <DisplayContactForm form={formData} />}
     </>
   );
 };
 
-export default ConfessForm;
-
+export default ContactForm;

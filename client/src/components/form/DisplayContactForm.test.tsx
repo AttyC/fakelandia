@@ -1,16 +1,16 @@
 import { render, screen } from '@testing-library/react';
-import { DisplayConfessForm } from './DisplayConfessForm';
-import { ConfessFormData } from './ConfessForm.types';
+import { DisplayContactForm } from './DisplayContactForm';
+import { ContactFormData } from './ContactForm.types';
 
-describe('<DisplayConfessForm>', () => {
+describe('<DisplayContactForm>', () => {
   it('renders all provided data', () => {
-    const form: ConfessFormData = {
+    const form: ContactFormData = {
       subject: '34uyhain',
       reasonForContact: 'united',
       message: 'eiohguirehuigihe',
     };
 
-    render(<DisplayConfessForm form={form} />);
+    render(<DisplayContactForm form={form} />);
 
     expect(screen.getByText('👉 ' + form.subject)).toBeInTheDocument();
     expect(screen.getByText('👉 ' + form.message)).toBeInTheDocument();

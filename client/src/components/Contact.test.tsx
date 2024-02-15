@@ -1,8 +1,8 @@
 import { render, screen } from '@testing-library/react';
-import Confess from './Confess';
+import Contact from './Contact';
 
 test('renders header text', () => {
-  render(<Confess />);
-  const someHeaderText = screen.getByText(/Confess/);
+  render(<Contact />);
+  const someHeaderText = screen.getByText(/Contact/);
   expect(someHeaderText).toBeInTheDocument();
 });
